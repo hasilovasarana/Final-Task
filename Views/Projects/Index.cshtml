@@ -1,0 +1,88 @@
+﻿@model IEnumerable<crm_system.Models.Project>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-title clearfix mt-3">
+    <h3 class="float-left "><strong>Projects List</strong></h3>  
+</div>
+
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="9"><i class="fa fa-briefcase" id="table-icon"></i>Projects List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>Project name</p>
+                </th>
+                <th>
+                    <p>Project File</p>
+                </th>
+                <th>
+                    <p>Start Date</p>
+                </th>
+                <th>
+                    <p>End Date</p>
+                </th>
+                <th>
+                    <p>Project Budget</p>
+                </th>
+                <th>
+                    <p>Advance Money</p>
+                </th>
+                <th>
+                    <p>Due Money</p>
+                </th>
+                <th>
+                    <p>Description</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.project_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.project_file)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.start_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.end_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.total_budget)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.advance_money)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.due_money)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.project_summary)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.project_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.project_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.project_id })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

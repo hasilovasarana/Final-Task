@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="page-title mt-5 mb-5"> Dashboard <small>dashboard & statistics</small></h4>
+
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="dashboard-stat blue clearfix p-2 rounded mb-3">
+            <div class="visual">
+                <i class="fa fa-comments fa-5x"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="5">0</span>
+                </div>
+                <div class="desc float-left"> Total Customer </div>
+            </div>
+            <a class="more float-right" href="/Customers">
+                View more
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="dashboard-stat red clearfix p-2 rounded mb-3">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o fa-5x"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="15">0</span>
+                </div>
+                <div class="desc float-left"> Total Sold Time </div>
+            </div>
+            <a class="more float-right" href="/Sale_Management">
+                View more
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="dashboard-stat green clearfix p-2 rounded mb-3">
+            <div class="visual">
+                <i class="fa fa-shopping-cart fa-5x"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="2">0</span>
+                </div>
+                <div class="desc float-left"> Total Warehouse </div>
+            </div>
+            <a class="more float-right" href="/Warehouses">
+                View more
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+

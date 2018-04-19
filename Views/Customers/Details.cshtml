@@ -1,0 +1,67 @@
+﻿@model crm_system.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4>Customers Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cusomer_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cusomer_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_loaction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_loaction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_detail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.customer_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

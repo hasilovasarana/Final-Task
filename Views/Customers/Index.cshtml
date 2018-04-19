@@ -1,0 +1,80 @@
+﻿@model IEnumerable<crm_system.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Customer</strong></h3>
+    <span class="float-left">Customer-management</span>
+    <!-- BEGIN ADD BUTTON -->
+    <a role="button" href="/Customers/Create" class="btn btn-md float-right d-md-block d-lg-block d-sm-none d-none" id="btn-add">Add Customer<i class="fa fa-plus" id="add-icon"></i></a>
+    <a role="button" href="/Customers/Create" class="btn btn-lg btn-block d-sm-block d-md-none d-lg-none" id="btn-add">Add Customer<i class="fa fa-plus" id="add-icon"></i></a>
+    <!-- BEGIN ADD BUTTON -->
+</div>
+
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="7"><i class="fa fa-briefcase" id="table-icon"></i>Customer List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>#</p>
+                </th>
+                <th>
+                    <p>Full Name</p>
+                </th>
+                <th>
+                    <p>Contact</p>
+                </th>
+                <th>
+                    <p>Email</p>
+                </th>                
+                <th>
+                    <p>Location</p>
+                </th>
+                <th>
+                    <p>Detail</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+            @foreach (var item in Model)
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_full_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cusomer_email)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_loaction)
+                </td>
+                <td>                    
+                    @Html.ActionLink("Details", "Details", new { id = item.customer_id })
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.customer_id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.customer_id })
+                    @*<a role="button" class="btn btn-danger" href="/Customers/Delete"><i class="fa fa-trash" id="delete-icon"></i></a>
+                    <a role="button" class="btn btn-info" href="/Customers/Edit"><i class="fa fa-edit" id="edit-icon"></i></a>*@
+                </td>
+            </tr>
+}
+        </tbody>
+    </table>
+</div>

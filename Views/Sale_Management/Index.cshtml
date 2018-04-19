@@ -1,0 +1,76 @@
+﻿@model IEnumerable<crm_system.Models.Sale_Management>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Sold Product List</strong></h3> 
+</div>
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="7"><i class="fa fa-briefcase" id="table-icon"></i>Sold Product List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>Date</p>
+                </th>
+                <th>
+                    <p>Quantity</p>
+                </th>
+                <th>
+                    <p>Customer</p>
+                </th>
+                <th>
+                    <p>Category Name</p>
+                </th>
+                <th>
+                    <p>Product Name</p>
+                </th>
+                <th>
+                    <p>Warehouse From</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sale_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.customer_full_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product_Category.prod_category_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product_Management.product_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Warehouse.warehouse_name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.sale_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.sale_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.sale_id })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

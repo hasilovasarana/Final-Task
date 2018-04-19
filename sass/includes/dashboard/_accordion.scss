@@ -1,0 +1,139 @@
+// Accordion Design
+.accordion-content-wrapper{
+		
+		
+		#accordion{
+			
+			background:#364150;
+			height:auto;
+			width:245px;					
+			.card{
+				background-color:#364150;
+				border: 1px  white;
+				#headingOne{
+					padding-top:50px;
+				}
+				#headingSixthteen{
+					padding-bottom:50px;
+				}
+				.card-header{
+					padding:3px 15px;
+					.mb-0{
+						:hover{
+							@extend .link-style;
+						}
+
+							button.btn-link{
+								color:white;
+								font-weight:300;
+								font-size:14px;											
+												
+								
+							
+						}
+						button a{
+								color:white;
+								font-weight:300;
+								font-size:14px;											
+								
+						}
+						#arrow-left {
+							position:absolute;
+							right:20px;
+							color:white;
+						}
+						#arrow-down{
+							position:absolute;
+							right:20px;
+							color:white;
+						}
+					}
+				}
+				.collapse{
+					.card-body {
+						
+						padding:10px 0px 0px 60px;
+						a{
+							font-size:14px;
+							color:white;
+						}
+						
+					}
+				}
+
+			}
+	
+		}
+
+	}
+
+
+// Responsive Accordion Menu design
+
+// .accordion-content-wrapper{
+// 	margin:0px -15px;
+	
+	// .row{
+		
+		// margin-right:15px;
+		#full-menu{
+			background:#364150;
+			height:auto;
+			width:100%;			
+			.card{
+				background-color:#364150;
+				border: 1px  white;
+				#headingOne{
+					padding-top:50px;
+				}
+				#headingSixthteen{
+					padding-bottom:50px;
+				}
+				.card-header{
+					padding:3px 15px;
+					.mb-0{
+						:hover{
+							@extend .link-style;
+						}
+
+							button.btn-link{
+								color:white;
+								font-weight:300;
+								font-size:14px;											
+												
+								
+							
+						}
+						button a{
+								color:white;
+								font-weight:300;
+								font-size:14px;											
+								
+						}
+						#left{
+							position:absolute;
+							right:20px;
+						}
+						#right{
+							position:absolute;
+							right:20px;
+						}
+					}
+				}
+				.collapse{
+					.card-body {
+						font-size:16px;
+						padding:10px 0px 0px 60px;
+						a{
+							color:white;
+						}
+						
+					}
+				}
+
+			}
+	
+		}
+
+	// }
+// }

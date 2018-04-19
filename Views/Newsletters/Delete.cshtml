@@ -1,0 +1,47 @@
+﻿@model crm_system.Models.Newsletter
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4 class="mt-5">Newsletter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.newsletter_datetime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newsletter_datetime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.newsletter_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newsletter_detail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

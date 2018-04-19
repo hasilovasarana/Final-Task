@@ -1,0 +1,634 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--::::::::::::::::::::: BEGIN CSS LINKS :::::::::::::::::-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Karma:300,400,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- :::::::::::::::::::END CSS LINKS::::::::::::::::::::::::: -->
+</head>
+<body>
+    <!-- Begin Header Section -->
+    <section id="header">
+        <nav class="navbar  navbar-expand-lg">
+            <a class="navbar-brand" href="#"><img src="~/images/logo_img.png" style="height: 30px" alt="logo" class="logo-default"></a>
+            <span class="navbar-icon"><i class="fa fa-align-justify d-none d-lg-block" style="font-size: 20px"></i></span>
+            <ul class="navbar-nav ml-auto d-md-block d-lg-none">
+                <!-- Begin Admin Responsive Popover -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" data-toggle="dropdown" data-hover="dropdown" id="admin-responsive">
+                        admin <span class="sr-only sr-only-focusable"></span><i class="fa fa-angle-down d-inline ml-3"></i>
+                        <div class="dropdown-menu ">
+                            <a class="dropdown-item" href="/Login/Change_Password"><i class="fa fa-cog" id="icon-change"></i>Change Password</a>
+                            <a class="dropdown-item" href="/Login/LogOut"><i class="fa fa-sign-out" id="icon-logout"></i>Log Out</a>
+                        </div>                       
+                    </a>
+                </li>
+                <!-- End Admin Responsive Popover -->
+            </ul>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#full-menu" style="font-size: 20px;color:black; border-size:  0px; border-color: transparent;outline:0">
+                <span class="navbar-icon"><i class="fa fa-align-justify d-md-block d-sm-block d-xl-block" id="navbar-icon"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="full-menu">
+                <div id="full-menu" class="d-lg-none">
+                    <div class="card">
+                        <div class="card-header" id="head_01">
+                            <h5 class="mb-0">
+                                <i class="fa fa-home" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link" aria-expanded="false">
+                                    <a href="/Dashboard">Dashboard</a>
+                                </button>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_02">
+                            <h5 class="mb-0">
+                                <i class="fa fa-users" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed " data-toggle="collapse" data-target="#collapse_02" aria-expanded="true" aria-controls="collapse_02">
+                                    Customer Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_02" class="collapse" aria-labelledby="head_02" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Customers/Index"> Customer</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Balances/Index"> Balance</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_03">
+                            <h5 class="mb-0">
+                                <i class="fa fa-indent" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_03" aria-expanded="false" aria-controls="collapse_03">
+                                    Inventory Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_03" class="collapse" aria-labelledby="head_03" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Product_Category/Index">Product Category</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Product_Management/Index">Product Management</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Warehouses">Product Stock/ Warehouse</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_04">
+                            <h5 class="mb-0">
+                                <i class="fa fa-print" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_04" aria-expanded="false" aria-controls="collapse_02">
+                                    Generate Invoice<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_04" class="collapse" aria-labelledby="head_04" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Sale_Management/Create">Sale Management</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Sale_Management">Sold History</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_05">
+                            <h5 class="mb-0">
+                                <i class="fa fa-bold" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_05" aria-expanded="false" aria-controls="collapse_05">
+                                    Bank Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_05" class="collapse" aria-labelledby="head_05" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Bank_Account/Index">Bank Account</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Credits/Index">Credit/Balance</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Expence_Transaction/Index">Transaction</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_06">
+                            <h5 class="mb-0">
+                                <i class="fa fa-ticket" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_06" aria-expanded="false" aria-controls="collapse_02">
+                                    Supplier Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_06" class="collapse" aria-labelledby="head_06" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Manage_Supplier/Index">Manage Suppliers</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Supply_Management/Create">Supply management</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Reports/Index">Reports</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_07">
+                            <h5 class="mb-0">
+                                <i class="fa fa-money" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_07" aria-expanded="false" aria-controls="collapse_07">
+                                    Loan Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_07" class="collapse" aria-labelledby="head_07" data-parent="#full-menu">
+                            <div class="card-body" data-toggle="collapse" data-target="#collapse_07_inside" aria-controls="collapse_07_inside">
+                                <a href="#">Personal Loan</a><i class="fa fa-angle-left" id="inside-left"></i><i class="fa fa-angle-down text-hide" id="inside-down"></i>
+                            </div>
+                            <div id="collapse_07_inside" class="collapse" aria-labelledby="head_07" data-parent="#collapse_07">
+                                <div class="card-body">
+                                    <a href="/Personal_Loan/Create" id="inside_menu">Add Person</a>
+                                </div>
+                                <div class="card-body">
+                                    <a href="/Personal_Loan/Index" id="inside_menu">Manage Loan</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_08">
+                            <h5 class="mb-0">
+                                <i class="fa fa-shopping-cart" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_08" aria-expanded="false" aria-controls="collapse_08">
+                                    Purchase Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_08" class="collapse" aria-labelledby="head_08" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Purchases/Create">Add purchase</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Purchases/Index">Purchase Reports</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_09">
+                            <h5 class="mb-0">
+                                <i class="fa fa-folder-open" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_09" aria-expanded="false" aria-controls="collapse_09">
+                                    Project Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_09" class="collapse" aria-labelledby="head_09" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Projects/Create">Start New Project</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Projects/Index">Manage Projects</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_10">
+                            <h5 class="mb-0">
+                                <i class="fa fa-paper-plane-o" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_10" aria-expanded="false" aria-controls="collapse_10">
+                                    Proposal Management<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_10" class="collapse" aria-labelledby="head_10" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Proposals/Create">Send Proposal</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Proposals/Index">History</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_11">
+                            <h5 class="mb-0">
+                                <i class="fa fa-file-text-o" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_11" aria-expanded="false" aria-controls="collapse_11">
+                                    NewsLetter<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_11" class="collapse" aria-labelledby="head_11" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Newsletters/Create">Send</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Newsletters/Index">History</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_12">
+                            <h5 class="mb-0">
+                                <i class="fa fa-sticky-note-o" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_12" aria-expanded="false" aria-controls="collapse_12">
+                                    Note / Draft<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_12" class="collapse" aria-labelledby="head_12" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Notes/Create">Add </a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Notes/Index">Manage</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_13">
+                            <h5 class="mb-0">
+                                <i class="fa fa-leanpub" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse_13" aria-expanded="false" aria-controls="collapse_02">
+                                    Knowledge Based<i class="fa fa-angle-left" id="left"></i><i class="fa fa-angle-down text-hide" id="down"></i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapse_13" class="collapse" aria-labelledby="head_13" data-parent="#full-menu">
+                            <div class="card-body">
+                                <a href="/Knowledges/Create">Add New</a>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Knowledges/Index">Manage</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_14">
+                            <h5 class="mb-0">
+                                <i class="fa fa-phone-square" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link" aria-expanded="false">
+                                    <a href="#">Contact List</a>
+                                </button>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_15">
+                            <h5 class="mb-0">
+                                <i class="fa fa-ticket" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link " aria-expanded="false">
+                                    <a href="#">Support</a>
+                                </button>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="head_16">
+                            <h5 class="mb-0">
+                                <i class="fa fa-cog" aria-hidden="true" id="card-icon"></i>
+                                <button class="btn btn-link" aria-expanded="false">
+                                    <a href="#">General Management</a>
+                                </button>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="navbar-nav d-lg-block d-none">
+                <!-- Begin Admin Popover -->
+                <li class="nav-item active">
+                    <a class="nav-link " href="#" data-toggle="dropdown" data-hover="dropdown" id="admin">admin<i class="fa fa-angle-down d-inline ml-3"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="/Login/Change_Password"><i class="fa fa-cog" id="icon-change"></i>Change Password</a>
+                        <a class="dropdown-item" href="/Login/LogOut"><i class="fa fa-sign-out" id="icon-logout"></i>Log Out</a>
+                    </div>                    
+                </li>
+                <!-- End Admin Popover -->
+            </ul>
+        </nav>
+    </section>
+    <!-- End Header Section -->
+    <!-- ::::::::::::::::::::::::BEGIN ACCORDION SECTION::::::::::::::::::: -->
+    <section id="accordion-menu">
+        <div class="container-fluid">
+            <div class="accordion-content-wrapper">
+                <div class="row">
+                    <!-- BEGIN ACORDION MENU -->
+                    <div class="col-lg-2 d-sm-none d-md-none d-lg-block d-none" style="padding-left:0px; padding-right:0px;">
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-home" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link" aria-expanded="false">
+                                            <a href="/Dashboard/Index">Dashboard</a>
+                                        </button>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-users" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed " data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Customer Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Customers/Index">Customer</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Balances/Index">Balance</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-indent" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Inventory Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Product_Category/Index">Product Category</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Product_Management/Index">Product Management</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Warehouses/">Product Stock/ Warehouse</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-print" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            Generate Invoice<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Sale_Management/Create">Sale Management</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Sale_Management">Sold History</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFive">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-bold" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                            Bank Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Bank_Account/Index">Bank Account</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Credits/Index">Credit/Balance</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Expence_Transaction/Index">Transaction</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSix">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-ticket" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                            Supplier Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Manage_Supplier/Index">Manage Suppliers</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Supply_Management/Create">Supply management</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Reports/Index">Reports</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSeven">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-money" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                            Loan Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                                    <div class="card-body" data-toggle="collapse" data-target="#collapseSevenInside" aria-controls="collapseSevenInside">
+                                        <a href="#">Personal Loan</a><i class="fa fa-angle-left" id="arrow-left"></i>
+                                    </div>
+                                    <div id="collapseSevenInside" class="collapse" aria-labelledby="headingSevenInside" data-parent="#collapseSeven">
+                                        <div class="card-body">
+                                            <a href="/Personal_Loan/Create" id="inside-menu">Add Person</a>
+                                        </div>
+                                        <div class="card-body">
+                                            <a href="/Personal_Loan/Index" id="inside-menu">Manage Loan</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingEight">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                            Purchase Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Purchases/Create">Add purchase</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Purchases/Index">Purchase Reports</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingNine">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-folder-open" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                            Project Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Projects/Create">Start New Project</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Projects/Index">Manage Projects</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTen">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-paper-plane-o" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                            Proposal Management<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Proposals/Create">Send Proposal</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Proposals/Index">History</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingEleven">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-file-text-o" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                            NewsLetter<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Newsletters/Create">Send</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Newsletters/Index">History</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingTwelve">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-sticky-note-o" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                                            Note / Draft<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Notes/Create">Add </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Notes/Index">Manage</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThirthteen">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-leanpub" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThirthteen" aria-expanded="false" aria-controls="collapseThirthteen">
+                                            Knowledge Based<i class="fa fa-angle-left" id="arrow-left"></i><i class="fa fa-angle-down text-hide" id="arrow-down"></i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseThirthteen" class="collapse" aria-labelledby="headingThirthteen" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <a href="/Knowledges/Create">Add New</a>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="/Knowledges/Index">Manage</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFourthteen">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-phone-square" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link" aria-expanded="false">
+                                            <a href="#">Contact List</a>
+                                        </button>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFifthteen">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-ticket" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link" aria-expanded="false">
+                                            <a href="#">Support</a>
+                                        </button>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSixthteen">
+                                    <h5 class="mb-0">
+                                        <i class="fa fa-cog" aria-hidden="true" id="card-icon"></i>
+                                        <button class="btn btn-link" aria-expanded="false">
+                                            <a href="#">General Management</a>
+                                        </button>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END ACCORDION MENU -->
+                    <div class="col-lg-10 col-md-12 col-sm-12" style="padding-right: 5px;">
+                        <div class="container-fluid">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Begin Change Password -->
+   
+    <!-- End Change Password -->
+    <!-- ::::::::::::::::::::BEGIN FOOTER SECTION::::::::::::::::::::::::: -->
+    <div class="footer" id="footer">
+        <nav class="navbar navbar-expand-lg">
+            <footer>2018 &copy; All Rights Reserved</footer>
+        </nav>
+    </div>
+    <!-- :::::::::::::::::::::END FOOTER SECTION:::::::::::::::::::::::::: -->
+    <!-- :::::::::::::::::::::::::SCRIPT LINk:::::::::::::::::::::::::::::::::::::::::::::: -->
+    <script src="~/js/tether.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/script.js"></script>
+</body>
+</html>

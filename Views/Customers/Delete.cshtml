@@ -1,0 +1,73 @@
+﻿@model crm_system.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div>
+    <h4 class="mt-5">Customer Delete</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cusomer_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cusomer_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_loaction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_loaction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_detail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Delete","Customers")) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

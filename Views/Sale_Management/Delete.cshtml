@@ -1,0 +1,71 @@
+﻿@model crm_system.Models.Sale_Management
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4 class="mt-5">Sale_Management</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sale_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sale_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.customer_full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.customer_full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Category.prod_category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Category.prod_category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Management.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Management.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Warehouse.warehouse_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Warehouse.warehouse_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

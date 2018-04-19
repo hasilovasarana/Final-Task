@@ -1,0 +1,62 @@
+﻿@model IEnumerable<crm_system.Models.Credit>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Credit</strong></h3>
+    <span class="float-left">Office-management</span>
+    <!-- BEGIN ADD BUTTON -->
+    <a role="button" href="/Credits/Create" class="btn btn-md float-right d-md-block d-lg-block d-sm-none d-none" id="btn-add">Credit Money<i class="fa fa-plus" id="add-icon"></i></a>
+    <a role="button" href="/Credits/Create" class="btn btn-lg btn-block d-sm-block d-md-none d-lg-none" id="btn-add">Credit Money<i class="fa fa-plus" id="add-icon"></i></a>
+    <!-- BEGIN ADD BUTTON -->
+</div>
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="4"><i class="fa fa-briefcase" id="table-icon"></i>Balance List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>Bank Name</p>
+                </th>
+                <th>
+                    <p>Bank AC Number</p>
+                </th>
+                <th>
+                    <p>Current balance</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bank_Account.bank_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bank_Account.account_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.credit_amount)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.credit_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.credit_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.credit_id })
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

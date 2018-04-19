@@ -1,0 +1,43 @@
+﻿@model IEnumerable<crm_system.Models.Expence_History>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Expence History</strong></h3>  
+</div>
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="2"><i class="fa fa-briefcase" id="table-icon"></i>Expence History</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>Bank Name</p>
+                </th>
+                <th>
+                    <p>AC Number</p>
+                </th>               
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bank_Account.bank_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bank_Account.account_number)
+                </td>                
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

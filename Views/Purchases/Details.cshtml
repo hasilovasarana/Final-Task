@@ -1,0 +1,43 @@
+﻿@model crm_system.Models.Purchase
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4 class="mt-5">Purchase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.purchase_amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purchase_amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purchase_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purchase_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purchase_detail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purchase_detail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.purchase_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

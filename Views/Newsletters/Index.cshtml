@@ -1,0 +1,62 @@
+﻿@model IEnumerable<crm_system.Models.Newsletter>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Newsletter List</strong></h3>  
+</div>
+
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="7"><i class="fa fa-briefcase" id="table-icon"></i>Newsletter List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>Mail Datetime</p>
+                </th>
+                <th>
+                    <p>Mail Subject</p>
+                </th>
+                <th>
+                    <p>Detail</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.newsletter_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.newsletter_datetime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subject)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.newsletter_detail)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.newsletter_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.newsletter_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.newsletter_id })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

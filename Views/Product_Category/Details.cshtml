@@ -1,0 +1,26 @@
+﻿@model crm_system.Models.Product_Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4 class="mt-5">Product_Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.prod_category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prod_category_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.prod_category_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

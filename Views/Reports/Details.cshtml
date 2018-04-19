@@ -1,0 +1,49 @@
+﻿@model crm_system.Models.Report
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4 class="mt-5">Report</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.report_supp_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.report_supp_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.report_manage_supp_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.report_manage_supp_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manage_Supplier.supplier_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manage_Supplier.supplier_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supply_Management.item_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supply_Management.item_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.report_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

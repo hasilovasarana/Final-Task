@@ -1,0 +1,35 @@
+﻿@model crm_system.Models.Expence_History
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4 class="mt-5">Expence_History</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.expence_history_expence_transac_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expence_history_expence_transac_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank_Account.bank_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank_Account.bank_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.expence_history_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

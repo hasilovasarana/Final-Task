@@ -1,0 +1,37 @@
+﻿@model crm_system.Models.Expence_History
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h4 class="mt-5">Expence_History</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.expence_history_expence_transac_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expence_history_expence_transac_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank_Account.bank_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank_Account.bank_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

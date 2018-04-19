@@ -1,0 +1,75 @@
+﻿@model IEnumerable<crm_system.Models.Balance>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Balance</strong></h3>
+    <span class="float-left">Customer-management</span>
+    <!-- BEGIN ADD BUTTON -->
+    <a role="button" href="/Balances/Create" class="btn btn-md float-right d-md-block d-lg-block d-sm-none d-none" id="btn-add">Add Balance<i class="fa fa-plus" id="add-icon"></i></a>
+    <a role="button" href="/Balances/Create" class="btn btn-lg btn-block d-sm-block d-md-none d-lg-none" id="btn-add">Add Balance<i class="fa fa-plus" id="add-icon"></i></a>
+    <!-- BEGIN ADD BUTTON -->
+</div>
+
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="6"><i class="fa fa-briefcase" id="table-icon"></i>Balance List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>#</p>
+                </th>
+                <th>
+                    <p>Amount</p>
+                </th>
+                <th>
+                    <p>Note</p>
+                </th>
+                <th>
+                    <p>Full name</p>
+                </th>
+                <th>
+                    <p>Email</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.balance_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.balance_amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.balance_note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.customer_full_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.cusomer_email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.balance_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.balance_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.balance_id })
+                </td>
+            </tr>
+            }
+
+   
+        </tbody>
+    </table>
+</div>

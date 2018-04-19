@@ -1,0 +1,34 @@
+﻿@model IEnumerable<crm_system.Models.Blog_Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.blog_title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.blog_title)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.blog_cat_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.blog_cat_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.blog_cat_id })
+        </td>
+    </tr>
+}
+
+</table>

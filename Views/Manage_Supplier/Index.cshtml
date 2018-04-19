@@ -1,0 +1,79 @@
+﻿@model IEnumerable<crm_system.Models.Manage_Supplier>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Supplier Management</strong></h3>   
+    <!-- BEGIN ADD BUTTON -->
+    <a role="button" href="/Manage_Supplier/Create" class="btn btn-md float-right d-md-block d-lg-block d-sm-none d-none" id="btn-add">Add New Supplier<i class="fa fa-plus" id="add-icon"></i></a>
+    <a role="button" href="/Manage_Supplier/Create" class="btn btn-lg btn-block d-sm-block d-md-none d-lg-none" id="btn-add">Add New Supplier<i class="fa fa-plus" id="add-icon"></i></a>
+    <!-- BEGIN ADD BUTTON -->
+</div>
+
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="6"><i class="fa fa-briefcase" id="table-icon"></i>Supplier List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>#</p>
+                </th>
+                <th>
+                    <p>Supplier Name</p>
+                </th>
+                <th>
+                    <p>Supplier Email</p>
+                </th>
+                <th>
+                    <p>Address</p>
+                </th>
+                <th>
+                    <p>Product item</p>
+                </th>                
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.manage_supp_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.supplier_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.supplier_mobile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.supplier_email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.supplier_address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.supplier_product_item)
+                    </td>                                    
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.manage_supp_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.manage_supp_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.manage_supp_id })
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<crm_system.Models.Personal_Loan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="6"><i class="fa fa-briefcase" id="table-icon"></i>Personal Loan List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>Name</p>
+                </th>
+                <th>
+                    <p>Phone</p>
+                </th>
+                <th>
+                    <p>Email</p>
+                </th>
+                <th>
+                    <p>Given Amount</p>
+                </th>
+                <th>
+                    <p>Detail</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.person_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.person_phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.person_email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.loan_amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.loan_detail)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.personal_loan_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.personal_loan_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.personal_loan_id })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

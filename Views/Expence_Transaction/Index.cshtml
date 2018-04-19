@@ -1,0 +1,76 @@
+﻿@model IEnumerable<crm_system.Models.Expence_Transaction>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Expence Transaction</strong></h3>
+    <span class="float-left">Office-management</span>
+    <!-- BEGIN ADD BUTTON -->
+    <a href="/Expence_History/Index" class="btn btn-md float-left d-md-block d-lg-block d-sm-none d-none" role="button" id="btn-minus">Debit History <i class="fa fa-minus" id="minus-icon"></i></a>
+    <a href="/Expence_History/Index" class="btn btn-lg btn-block  d-md-none d-lg-none d-sm-block" role="button" id="btn-minus">Debit History <i class="fa fa-minus" id="minus-icon"></i></a>
+
+    <a href="/Expence_Transaction/Create" class="btn btn-md float-right d-md-block d-lg-block d-sm-none d-none" role="button" id="btn-add">Debit <i class="fa fa-plus" id="add-icon"></i></a>
+    <a href="/Expence_Transaction/Create" class="btn btn-lg btn-block d-sm-block d-md-none d-lg-none" role="button" id="btn-add">Debit <i class="fa fa-plus" id="add-icon"></i></a>
+    <!-- BEGIN ADD BUTTON -->
+</div>
+
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="5"><i class="fa fa-briefcase" id="table-icon"></i>Transaction</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>#</p>
+                </th>
+                <th>
+                    <p>Transaction amount</p>
+                </th>
+                <th>
+                    <p>Purpose Note</p>
+                </th>
+                <th>
+                    <p>Purpose date</p>
+                </th>                
+                <th>
+                    Action
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.transaction_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.transaction_amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.purpose_note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.purpose_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bank_Account.bank_name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.transaction_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.transaction_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.transaction_id })
+                </td>
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

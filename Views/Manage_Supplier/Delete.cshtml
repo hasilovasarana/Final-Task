@@ -1,0 +1,79 @@
+﻿@model crm_system.Models.Manage_Supplier
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4 class="mt-5">Manage_Supplier</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.supplier_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplier_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.supplier_mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplier_mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.supplier_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplier_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.supplier_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplier_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.supplier_product_item)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supplier_product_item)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.supply_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.supply_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Report.report_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Report.report_id)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

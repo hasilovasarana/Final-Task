@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b99ca248e5474d0abb69f76fcbc5a816" Name="Diagram1">
+        <EntityTypeShape EntityType="CRMModel.Admin" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Balance" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Bank_Account" Width="1.5" PointX="7.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Blog_Category" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Credit" Width="1.5" PointX="10" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Customer" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Expence_History" Width="1.5" PointX="10" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Expence_Transaction" Width="1.5" PointX="10" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Knowledge" Width="1.5" PointX="15" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Manage_Knowledge" Width="1.5" PointX="17.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Manage_Loan" Width="1.5" PointX="18" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Manage_Project" Width="1.5" PointX="15" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Manage_Supplier" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Newsletter" Width="1.5" PointX="17.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Newsletter_History" Width="1.5" PointX="20" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Note" Width="1.5" PointX="12.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Note_History" Width="1.5" PointX="15" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Personal_Loan" Width="1.5" PointX="15.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Product_Category" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Product_Management" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Product_Stock" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Project" Width="1.5" PointX="12.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Proposal" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Proposal_History" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Purchase" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Purchase_Report" Width="1.5" PointX="15" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Sale_Management" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Sold_History" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Subscribe_Status" Width="1.5" PointX="10.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Supply_Management" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.sysdiagram" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMModel.Warehouse" Width="1.5" PointX="3.75" PointY="15.5" IsExpanded="true" />
+        <AssociationConnector Association="CRMModel.FK_Balance_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Credit_Bank_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Expence_History_Bank_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Expence_Transaction_Bank_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Knowledge_Knowledge" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Proposal_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Sale_Management_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Manage_Knowledge_Knowledge" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Manage_Loan_Personal_Loan" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Manage_Project_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Supply_Management_Manage_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Newsletter_History_Newsletter" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Note_History_Note" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Product_Management_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Sale_Management_Product_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Product_Stock_Product_Stock" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Sale_Management_Product_Management" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Product_Stock_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Proposal_History_Proposal" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Purchase_Report_Purchase" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Sale_Management_Warehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Sold_History_Sold_History" ManuallyRouted="false" />
+        <AssociationConnector Association="CRMModel.FK_Supply_Management_Subscribe_Status" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CRMModel.Report" Width="1.5" PointX="20.125" PointY="0.875" />
+        <AssociationConnector Association="CRMModel.FK_Reports_Manage_Supplier" />
+        <AssociationConnector Association="CRMModel.FK_Reports_Supply_Management" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

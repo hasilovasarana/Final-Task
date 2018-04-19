@@ -1,0 +1,255 @@
+// common tags
+
+body{
+	margin:0px;	
+	font-size:14px;
+
+}
+
+
+@font-face{
+	font-family: 'Karma', serif;
+	src: url(/https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css/to/fonts/Karma.woff) format('woff'); 
+	font-style: normal;
+  	font-display: swap;
+}
+
+.link-style{
+	text-decoration:none;
+}
+
+#inside-left{
+	color:white;
+}
+#inside-down{
+	color:white;
+}
+
+#icon-change,#icon-logout{
+	position:relative;
+	right:10px;
+}
+
+#old_psw_label{
+	padding-left:20px;
+}
+#confirm_psw_label{
+	padding-left:30px;
+}
+
+#delete-icon{
+	position:relative;
+	
+	color:white;
+
+}
+#edit-icon{
+	position:relative;
+
+	color:white;
+
+}
+#add-icon{
+	position:relative;
+	left:5px;
+	color:white;
+
+}
+
+#inside_menu{
+	padding-left:20px;
+}
+
+#table-content{
+	color:#34495e;
+}
+
+hr{
+	margin-top:25px;
+}
+
+
+.dashboard-stat.blue{
+	background-color:blue;	
+}
+.dashboard-stat.red{
+	background-color:red;
+}
+.dashboard-stat.green{
+	background-color:green;
+}
+div.visual{
+		i{
+			color:white;
+			opacity:0.2;
+			font-size:120px;
+		}
+		
+	}
+div.desc.float-left{
+	color:white;
+}
+.table-title{
+
+		   
+		    position: relative;
+		    top: 25px;
+		    h3{
+		    	margin-top:5px;
+		    	margin-right:20px;
+		    }
+		span{
+				font-size:16px;
+			    display: inline;			    
+			    line-height:20px;			    
+			    margin-top:15px;
+			    margin-bottom:0px;
+		}
+		a#btn-add{
+				background: #22313F;				
+		    	position: relative;		    
+		    	color:white;
+		    #add-icon{
+					position:relative;
+					left:5px;
+			}
+			#btn-minus{
+			color:white;
+			background:#4DB3A2;
+			position: relative;		   
+			#minus-icon{
+				position:relative;
+				left:5px;
+			}
+		}	
+		}
+		
+
+	}
+	
+		#table{
+				border:2px solid #2C3E50;
+				.table{
+					margin-bottom:0px;	
+				}
+					a#btn-view{
+					background-color: #4DB3A2;
+					color:white;
+					#icon-view{
+						position:relative;
+						right:5px;
+					}
+				}					
+				
+				
+		    #table-title{
+		    	font-size:18px;
+		   		color:white;
+				background-color: #2C3E50;
+				
+
+				#table-icon{
+					position:relative;
+					right:5px;
+
+				}
+			
+
+		}
+		
+	}
+div.form-group.row{
+	margin-bottom:0px;
+}
+div.custom-file{
+	width:50%;
+}
+
+// .table-bordered th{
+// 	border:0px;
+// }
+// .table th{
+// 	border:0px;
+// }
+@media only screen and (max-width: 1125px) {
+    .col-lg-10 {
+        padding-left:60px;
+        
+    }
+}
+
+@media only screen and (max-width: 1025px) {
+    .col-lg-10 {
+        padding-left:75px;
+        
+    }
+}
+@media only screen and (max-width: 992px) {
+    .col-lg-10 {
+        padding-left:0px;
+        
+    }
+}
+@media only screen and (max-width: 768px) {
+    .col-lg-10 {
+        padding-left:0px;
+      
+    }
+}
+@media only screen and (max-width: 320px) {
+   .logo-default{
+   		width:150px;
+   }
+}
+
+
+
+
+// import files
+
+@import "includes/dashboard/header.scss";
+@import "includes/dashboard/accordion.scss";
+@import "includes/dashboard/footer.scss";
+// @import "includes/customer/balance.scss";
+// @import "includes/customer/customer.scss";
+// @import "includes/inventory/product_category.scss";
+// @import "includes/inventory/product_stock.scss";
+// @import "includes/inventory/product_stock_list.scss";
+// @import "includes/inventory/product_management.scss";
+// @import "includes/generate/sale_management.scss";
+// @import "includes/generate/sold_history.scss";
+// @import "includes/bank/bank_account.scss";
+// @import "includes/bank/bank_account_edit.scss";
+// @import "includes/bank/credit_balance.scss";
+// @import "includes/bank/transaction.scss";
+// @import "includes/bank/expense_transaction.scss";
+// @import "includes/bank/view_transaction.scss";
+// @import "includes/bank/expense_history.scss";
+// @import "includes/supplier/manage_suppliers.scss";
+// @import "includes/supplier/reports.scss";
+// @import "includes/supplier/supply_management.scss";
+// @import "includes/supplier/supplier_item_edit.scss";
+// @import "includes/supplier/supply_reports_detail.scss";
+// @import "includes/supplier/supply_reports_detail_for_date.scss";
+// @import "includes/loan/add_person.scss";
+// @import "includes/loan/manage_loan.scss";
+// @import "includes/loan/edit_manage_loan.scss";
+// @import "includes/purchase/add_purchase.scss";
+// @import "includes/purchase/purchase_reports.scss";
+// @import "includes/purchase/edit_purchase_reports.scss";
+// @import "includes/project/manage_projects.scss";
+// @import "includes/project/start_new_project.scss";
+// @import "includes/proposal/send_proposal.scss";
+// @import "includes/proposal/proposal_history.scss";
+// @import "includes/newsletter/history.scss";
+// @import "includes/newsletter/send.scss";
+// @import "includes/note/add_note.scss";
+// @import "includes/note/edit_note.scss";
+// @import "includes/note/manage_note.scss";
+// @import "includes/knowledge/add_knowledge.scss";
+// @import "includes/knowledge/manage_knowledge.scss";
+// @import "includes/knowledge/edit_knowledge.scss";
+// @import "includes/contact/contact_list.scss";
+// @import "includes/support/support.scss";
+// @import "includes/general/general.scss";
+// @import "includes/admin/login.scss";

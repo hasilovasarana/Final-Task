@@ -1,0 +1,74 @@
+﻿@model IEnumerable<crm_system.Models.Bank_Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="table-title clearfix mt-5">
+    <h3 class="float-left "><strong>Bank List</strong></h3>
+    <span class="float-left">Office-management</span>
+    <!-- BEGIN ADD BUTTON -->
+    <a role="button" href="/Bank_Account/Create" class="btn btn-md float-right d-md-block d-lg-block d-sm-none d-none" id="btn-add">Add Bank Account<i class="fa fa-plus" id="add-icon"></i></a>
+    <a role="button" href="/Bank_Account/Create" class="btn btn-lg btn-block d-sm-block d-md-none d-lg-none" id="btn-add">Add Bank Account<i class="fa fa-plus" id="add-icon"></i></a>
+    <!-- BEGIN ADD BUTTON -->
+</div>
+
+<div class="table table-responsive d-sm-table d-md-table d-lg-table d-xl-table rounded mt-5">
+    <table class="table table-bordered table-hover" id="table">
+        <thead id="table-title">
+            <tr>
+                <th colspan="6"><i class="fa fa-briefcase" id="table-icon"></i>Bank List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <p>#</p>
+                </th>
+                <th>
+                    <p>Bank Name</p>
+                </th>
+                <th>
+                    <p>AC Number</p>
+                </th>
+                <th>
+                    <p>Branch Name</p>
+                </th>
+                <th>
+                    <p>Swift Code</p>
+                </th>
+                <th>
+                    <p>Action</p>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.bank_account_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bank_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.account_number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.branch_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.swift_code)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.bank_account_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.bank_account_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.bank_account_id })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

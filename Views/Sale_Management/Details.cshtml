@@ -1,0 +1,67 @@
+﻿@model crm_system.Models.Sale_Management
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4 class="mt-5">Sale_Management</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sale_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sale_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.customer_full_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.customer_full_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Category.prod_category_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Category.prod_category_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product_Management.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product_Management.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Warehouse.warehouse_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Warehouse.warehouse_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.sale_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

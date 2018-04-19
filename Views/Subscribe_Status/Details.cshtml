@@ -1,0 +1,43 @@
+﻿@model crm_system.Models.Subscribe_Status
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Subscribe_Status</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sub_status_check)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sub_status_check)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.from_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.from_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.to_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.to_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.sub_status_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,789 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CRMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="admin_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="admin_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="admin_new_psw" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="admin_confirm_psw" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Balance">
+    <Key>
+      <PropertyRef Name="balance_id" />
+    </Key>
+    <Property Name="balance_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="balance_customer_id" Type="Int32" />
+    <Property Name="balance_amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="balance_note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Balance_Customer" FromRole="Balance" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Bank_Account">
+    <Key>
+      <PropertyRef Name="bank_account_id" />
+    </Key>
+    <Property Name="bank_account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bank_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="account_number" Type="Int64" />
+    <Property Name="branch_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="swift_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Credits" Relationship="Self.FK_Credit_Bank_Account" FromRole="Bank_Account" ToRole="Credit" />
+    <NavigationProperty Name="Expence_History" Relationship="Self.FK_Expence_History_Bank_Account" FromRole="Bank_Account" ToRole="Expence_History" />
+    <NavigationProperty Name="Expence_Transaction" Relationship="Self.FK_Expence_Transaction_Bank_Account" FromRole="Bank_Account" ToRole="Expence_Transaction" />
+  </EntityType>
+  <EntityType Name="Blog_Category">
+    <Key>
+      <PropertyRef Name="blog_cat_id" />
+    </Key>
+    <Property Name="blog_cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="blog_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Knowledges" Relationship="Self.FK_Knowledge_Knowledge" FromRole="Blog_Category" ToRole="Knowledge" />
+  </EntityType>
+  <EntityType Name="Credit">
+    <Key>
+      <PropertyRef Name="credit_id" />
+    </Key>
+    <Property Name="credit_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="credit_bank_acc_id" Type="Int32" />
+    <Property Name="credit_amount" Type="Int32" />
+    <NavigationProperty Name="Bank_Account" Relationship="Self.FK_Credit_Bank_Account" FromRole="Credit" ToRole="Bank_Account" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_full_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customer_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cusomer_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customer_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="customer_loaction" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="customer_detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Balances" Relationship="Self.FK_Balance_Customer" FromRole="Customer" ToRole="Balance" />
+    <NavigationProperty Name="Proposals" Relationship="Self.FK_Proposal_Customer" FromRole="Customer" ToRole="Proposal" />
+    <NavigationProperty Name="Sale_Management" Relationship="Self.FK_Sale_Management_Customer" FromRole="Customer" ToRole="Sale_Management" />
+  </EntityType>
+  <EntityType Name="Expence_History">
+    <Key>
+      <PropertyRef Name="expence_history_id" />
+    </Key>
+    <Property Name="expence_history_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="expence_history_bank_acc_id" Type="Int32" />
+    <Property Name="expence_history_expence_transac_id" Type="Int32" />
+    <NavigationProperty Name="Bank_Account" Relationship="Self.FK_Expence_History_Bank_Account" FromRole="Expence_History" ToRole="Bank_Account" />
+  </EntityType>
+  <EntityType Name="Expence_Transaction">
+    <Key>
+      <PropertyRef Name="transaction_id" />
+    </Key>
+    <Property Name="transaction_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transac_bank_acc_id" Type="Int32" />
+    <Property Name="transaction_amount" Type="Int32" />
+    <Property Name="purpose_note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="purpose_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Bank_Account" Relationship="Self.FK_Expence_Transaction_Bank_Account" FromRole="Expence_Transaction" ToRole="Bank_Account" />
+  </EntityType>
+  <EntityType Name="Knowledge">
+    <Key>
+      <PropertyRef Name="knowledge_id" />
+    </Key>
+    <Property Name="knowledge_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="knowledge_blog_cat_id" Type="Int32" />
+    <Property Name="knowledge_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="knowledge_detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="knowledge_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Blog_Category" Relationship="Self.FK_Knowledge_Knowledge" FromRole="Knowledge" ToRole="Blog_Category" />
+    <NavigationProperty Name="Manage_Knowledge" Relationship="Self.FK_Manage_Knowledge_Knowledge" FromRole="Knowledge" ToRole="Manage_Knowledge" />
+  </EntityType>
+  <EntityType Name="Manage_Knowledge">
+    <Key>
+      <PropertyRef Name="manage_knowledge_id" />
+    </Key>
+    <Property Name="manage_knowledge_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="manage_know_knowledge_id" Type="Int32" />
+    <NavigationProperty Name="Knowledge" Relationship="Self.FK_Manage_Knowledge_Knowledge" FromRole="Manage_Knowledge" ToRole="Knowledge" />
+  </EntityType>
+  <EntityType Name="Manage_Loan">
+    <Key>
+      <PropertyRef Name="manage_loan_id" />
+    </Key>
+    <Property Name="manage_loan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="manage_loan_personal_loan_id" Type="Int32" />
+    <NavigationProperty Name="Personal_Loan" Relationship="Self.FK_Manage_Loan_Personal_Loan" FromRole="Manage_Loan" ToRole="Personal_Loan" />
+  </EntityType>
+  <EntityType Name="Manage_Project">
+    <Key>
+      <PropertyRef Name="manage_project_id" />
+    </Key>
+    <Property Name="manage_project_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="manage_proj_project_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_Manage_Project_Project" FromRole="Manage_Project" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Manage_Supplier">
+    <Key>
+      <PropertyRef Name="manage_supp_id" />
+    </Key>
+    <Property Name="manage_supp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supplier_mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="supplier_address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="supplier_product_item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="supply_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Supply_Management" Relationship="Self.FK_Supply_Management_Manage_Supplier" FromRole="Manage_Supplier" ToRole="Supply_Management" />
+    <NavigationProperty Name="Report" Relationship="CRMModel.FK_Reports_Manage_Supplier" FromRole="Manage_Supplier" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="Newsletter">
+    <Key>
+      <PropertyRef Name="newsletter_id" />
+    </Key>
+    <Property Name="newsletter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="newsletter_datetime" Type="DateTime" Precision="3" />
+    <Property Name="newsletter_detail" Type="Int32" />
+    <NavigationProperty Name="Newsletter_History" Relationship="Self.FK_Newsletter_History_Newsletter" FromRole="Newsletter" ToRole="Newsletter_History" />
+  </EntityType>
+  <EntityType Name="Newsletter_History">
+    <Key>
+      <PropertyRef Name="newsletter_history_id" />
+    </Key>
+    <Property Name="newsletter_history_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="news_history_newsletter_id" Type="Int32" />
+    <NavigationProperty Name="Newsletter" Relationship="Self.FK_Newsletter_History_Newsletter" FromRole="Newsletter_History" ToRole="Newsletter" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="note_id" />
+    </Key>
+    <Property Name="note_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="note_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="note_detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="note_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Note_History" Relationship="Self.FK_Note_History_Note" FromRole="Note" ToRole="Note_History" />
+  </EntityType>
+  <EntityType Name="Note_History">
+    <Key>
+      <PropertyRef Name="note_history_id" />
+    </Key>
+    <Property Name="note_history_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="note_history_note_id" Type="Int32" />
+    <NavigationProperty Name="Note" Relationship="Self.FK_Note_History_Note" FromRole="Note_History" ToRole="Note" />
+  </EntityType>
+  <EntityType Name="Personal_Loan">
+    <Key>
+      <PropertyRef Name="personal_loan_id" />
+    </Key>
+    <Property Name="personal_loan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="person_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="person_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="person_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="loan_amount" Type="Int32" />
+    <Property Name="loan_detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Manage_Loan" Relationship="Self.FK_Manage_Loan_Personal_Loan" FromRole="Personal_Loan" ToRole="Manage_Loan" />
+  </EntityType>
+  <EntityType Name="Product_Category">
+    <Key>
+      <PropertyRef Name="prod_category_id" />
+    </Key>
+    <Property Name="prod_category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prod_category_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product_Management" Relationship="Self.FK_Product_Management_Product_Category" FromRole="Product_Category" ToRole="Product_Management" />
+    <NavigationProperty Name="Sale_Management" Relationship="Self.FK_Sale_Management_Product_Category" FromRole="Product_Category" ToRole="Sale_Management" />
+  </EntityType>
+  <EntityType Name="Product_Management">
+    <Key>
+      <PropertyRef Name="product_manage_id" />
+    </Key>
+    <Property Name="product_manage_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prod_manag_prod_cat_id" Type="Int32" />
+    <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="product_unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="buying_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="selling_price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product_Category" Relationship="Self.FK_Product_Management_Product_Category" FromRole="Product_Management" ToRole="Product_Category" />
+    <NavigationProperty Name="Product_Stock" Relationship="Self.FK_Product_Stock_Product_Stock" FromRole="Product_Management" ToRole="Product_Stock" />
+    <NavigationProperty Name="Sale_Management" Relationship="Self.FK_Sale_Management_Product_Management" FromRole="Product_Management" ToRole="Sale_Management" />
+  </EntityType>
+  <EntityType Name="Product_Stock">
+    <Key>
+      <PropertyRef Name="product_stock_id" />
+    </Key>
+    <Property Name="product_stock_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_warehouse_id" Type="Int32" />
+    <Property Name="prod_stock_prod_manage_id" Type="Int32" />
+    <Property Name="quantity" Type="Int32" />
+    <NavigationProperty Name="Product_Management" Relationship="Self.FK_Product_Stock_Product_Stock" FromRole="Product_Stock" ToRole="Product_Management" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_Product_Stock_Warehouse" FromRole="Product_Stock" ToRole="Warehouse" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="project_id" />
+    </Key>
+    <Property Name="project_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="project_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="project_file" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="total_budget" Type="Int32" />
+    <Property Name="advance_money" Type="Int32" />
+    <Property Name="due_money" Type="Int32" />
+    <Property Name="project_summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Manage_Project" Relationship="Self.FK_Manage_Project_Project" FromRole="Project" ToRole="Manage_Project" />
+  </EntityType>
+  <EntityType Name="Proposal">
+    <Key>
+      <PropertyRef Name="proposal_id" />
+    </Key>
+    <Property Name="proposal_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proposal_customer_id" Type="Int32" />
+    <Property Name="attachment_file" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="propposal_date" Type="DateTime" Precision="3" />
+    <Property Name="proposal_detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Proposal_Customer" FromRole="Proposal" ToRole="Customer" />
+    <NavigationProperty Name="Proposal_History" Relationship="Self.FK_Proposal_History_Proposal" FromRole="Proposal" ToRole="Proposal_History" />
+  </EntityType>
+  <EntityType Name="Proposal_History">
+    <Key>
+      <PropertyRef Name="proposal_history_id" />
+    </Key>
+    <Property Name="proposal_history_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proposal_history_proposal_id" Type="Int32" />
+    <NavigationProperty Name="Proposal" Relationship="Self.FK_Proposal_History_Proposal" FromRole="Proposal_History" ToRole="Proposal" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="purchase_id" />
+    </Key>
+    <Property Name="purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_amount" Type="Int32" />
+    <Property Name="purchase_date" Type="DateTime" Precision="0" />
+    <Property Name="purchase_detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Purchase_Report" Relationship="Self.FK_Purchase_Report_Purchase" FromRole="Purchase" ToRole="Purchase_Report" />
+  </EntityType>
+  <EntityType Name="Purchase_Report">
+    <Key>
+      <PropertyRef Name="purchase_report_id" />
+    </Key>
+    <Property Name="purchase_report_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_report_purchase_id" Type="Int32" />
+    <NavigationProperty Name="Purchase" Relationship="Self.FK_Purchase_Report_Purchase" FromRole="Purchase_Report" ToRole="Purchase" />
+  </EntityType>
+  <EntityType Name="Sale_Management">
+    <Key>
+      <PropertyRef Name="sale_id" />
+    </Key>
+    <Property Name="sale_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sale_warehouse_id" Type="Int32" />
+    <Property Name="sale_customer_id" Type="Int32" />
+    <Property Name="sale_prod_cat_id" Type="Int32" Nullable="false" />
+    <Property Name="sale_prod_manage_id" Type="Int32" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="sale_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Sale_Management_Customer" FromRole="Sale_Management" ToRole="Customer" />
+    <NavigationProperty Name="Product_Category" Relationship="Self.FK_Sale_Management_Product_Category" FromRole="Sale_Management" ToRole="Product_Category" />
+    <NavigationProperty Name="Product_Management" Relationship="Self.FK_Sale_Management_Product_Management" FromRole="Sale_Management" ToRole="Product_Management" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_Sale_Management_Warehouse" FromRole="Sale_Management" ToRole="Warehouse" />
+    <NavigationProperty Name="Sold_History" Relationship="Self.FK_Sold_History_Sold_History" FromRole="Sale_Management" ToRole="Sold_History" />
+  </EntityType>
+  <EntityType Name="Sold_History">
+    <Key>
+      <PropertyRef Name="sold_history_id" />
+    </Key>
+    <Property Name="sold_history_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sold_history_sale_id" Type="Int32" />
+    <NavigationProperty Name="Sale_Management" Relationship="Self.FK_Sold_History_Sold_History" FromRole="Sold_History" ToRole="Sale_Management" />
+  </EntityType>
+  <EntityType Name="Subscribe_Status">
+    <Key>
+      <PropertyRef Name="sub_status_id" />
+    </Key>
+    <Property Name="sub_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sub_status_check" Type="Boolean" />
+    <Property Name="from_date" Type="DateTime" Precision="0" />
+    <Property Name="to_date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Supply_Management" Relationship="Self.FK_Supply_Management_Subscribe_Status" FromRole="Subscribe_Status" ToRole="Supply_Management" />
+  </EntityType>
+  <EntityType Name="Supply_Management">
+    <Key>
+      <PropertyRef Name="supply_manage_id" />
+    </Key>
+    <Property Name="supply_manage_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="supply_manage_supp_id" Type="Int32" />
+    <Property Name="subscribe_status_id" Type="Int32" />
+    <Property Name="rate" Type="Int32" />
+    <Property Name="item_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="total_amount" Type="Int32" />
+    <NavigationProperty Name="Manage_Supplier" Relationship="Self.FK_Supply_Management_Manage_Supplier" FromRole="Supply_Management" ToRole="Manage_Supplier" />
+    <NavigationProperty Name="Subscribe_Status" Relationship="Self.FK_Supply_Management_Subscribe_Status" FromRole="Supply_Management" ToRole="Subscribe_Status" />
+    <NavigationProperty Name="Report" Relationship="CRMModel.FK_Reports_Supply_Management" FromRole="Supply_Management" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="warehouse_id" />
+    </Key>
+    <Property Name="warehouse_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="warehouse_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="warehouse_location" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product_Stock" Relationship="Self.FK_Product_Stock_Warehouse" FromRole="Warehouse" ToRole="Product_Stock" />
+    <NavigationProperty Name="Sale_Management" Relationship="Self.FK_Sale_Management_Warehouse" FromRole="Warehouse" ToRole="Sale_Management" />
+  </EntityType>
+  <Association Name="FK_Balance_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Balance" Type="Self.Balance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="Balance">
+        <PropertyRef Name="balance_customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Credit_Bank_Account">
+    <End Role="Bank_Account" Type="Self.Bank_Account" Multiplicity="0..1" />
+    <End Role="Credit" Type="Self.Credit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank_Account">
+        <PropertyRef Name="bank_account_id" />
+      </Principal>
+      <Dependent Role="Credit">
+        <PropertyRef Name="credit_bank_acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expence_History_Bank_Account">
+    <End Role="Bank_Account" Type="Self.Bank_Account" Multiplicity="0..1" />
+    <End Role="Expence_History" Type="Self.Expence_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank_Account">
+        <PropertyRef Name="bank_account_id" />
+      </Principal>
+      <Dependent Role="Expence_History">
+        <PropertyRef Name="expence_history_bank_acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expence_Transaction_Bank_Account">
+    <End Role="Bank_Account" Type="Self.Bank_Account" Multiplicity="0..1" />
+    <End Role="Expence_Transaction" Type="Self.Expence_Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank_Account">
+        <PropertyRef Name="bank_account_id" />
+      </Principal>
+      <Dependent Role="Expence_Transaction">
+        <PropertyRef Name="transac_bank_acc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Knowledge_Knowledge">
+    <End Role="Blog_Category" Type="Self.Blog_Category" Multiplicity="0..1" />
+    <End Role="Knowledge" Type="Self.Knowledge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Blog_Category">
+        <PropertyRef Name="blog_cat_id" />
+      </Principal>
+      <Dependent Role="Knowledge">
+        <PropertyRef Name="knowledge_blog_cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proposal_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Proposal" Type="Self.Proposal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="Proposal">
+        <PropertyRef Name="proposal_customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Management_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Sale_Management" Type="Self.Sale_Management" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="Sale_Management">
+        <PropertyRef Name="sale_customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Manage_Knowledge_Knowledge">
+    <End Role="Knowledge" Type="Self.Knowledge" Multiplicity="0..1" />
+    <End Role="Manage_Knowledge" Type="Self.Manage_Knowledge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Knowledge">
+        <PropertyRef Name="knowledge_id" />
+      </Principal>
+      <Dependent Role="Manage_Knowledge">
+        <PropertyRef Name="manage_know_knowledge_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Manage_Loan_Personal_Loan">
+    <End Role="Personal_Loan" Type="Self.Personal_Loan" Multiplicity="0..1" />
+    <End Role="Manage_Loan" Type="Self.Manage_Loan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal_Loan">
+        <PropertyRef Name="personal_loan_id" />
+      </Principal>
+      <Dependent Role="Manage_Loan">
+        <PropertyRef Name="manage_loan_personal_loan_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Manage_Project_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="1" />
+    <End Role="Manage_Project" Type="Self.Manage_Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="project_id" />
+      </Principal>
+      <Dependent Role="Manage_Project">
+        <PropertyRef Name="manage_proj_project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Management_Manage_Supplier">
+    <End Role="Manage_Supplier" Type="Self.Manage_Supplier" Multiplicity="0..1" />
+    <End Role="Supply_Management" Type="Self.Supply_Management" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manage_Supplier">
+        <PropertyRef Name="manage_supp_id" />
+      </Principal>
+      <Dependent Role="Supply_Management">
+        <PropertyRef Name="supply_manage_supp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Newsletter_History_Newsletter">
+    <End Role="Newsletter" Type="Self.Newsletter" Multiplicity="0..1" />
+    <End Role="Newsletter_History" Type="Self.Newsletter_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Newsletter">
+        <PropertyRef Name="newsletter_id" />
+      </Principal>
+      <Dependent Role="Newsletter_History">
+        <PropertyRef Name="news_history_newsletter_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Note_History_Note">
+    <End Role="Note" Type="Self.Note" Multiplicity="0..1" />
+    <End Role="Note_History" Type="Self.Note_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Note">
+        <PropertyRef Name="note_id" />
+      </Principal>
+      <Dependent Role="Note_History">
+        <PropertyRef Name="note_history_note_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Management_Product_Category">
+    <End Role="Product_Category" Type="Self.Product_Category" Multiplicity="0..1" />
+    <End Role="Product_Management" Type="Self.Product_Management" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Category">
+        <PropertyRef Name="prod_category_id" />
+      </Principal>
+      <Dependent Role="Product_Management">
+        <PropertyRef Name="prod_manag_prod_cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Management_Product_Category">
+    <End Role="Product_Category" Type="Self.Product_Category" Multiplicity="1" />
+    <End Role="Sale_Management" Type="Self.Sale_Management" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Category">
+        <PropertyRef Name="prod_category_id" />
+      </Principal>
+      <Dependent Role="Sale_Management">
+        <PropertyRef Name="sale_prod_cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Stock_Product_Stock">
+    <End Role="Product_Management" Type="Self.Product_Management" Multiplicity="0..1" />
+    <End Role="Product_Stock" Type="Self.Product_Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Management">
+        <PropertyRef Name="product_manage_id" />
+      </Principal>
+      <Dependent Role="Product_Stock">
+        <PropertyRef Name="prod_stock_prod_manage_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Management_Product_Management">
+    <End Role="Product_Management" Type="Self.Product_Management" Multiplicity="0..1" />
+    <End Role="Sale_Management" Type="Self.Sale_Management" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Management">
+        <PropertyRef Name="product_manage_id" />
+      </Principal>
+      <Dependent Role="Sale_Management">
+        <PropertyRef Name="sale_prod_manage_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Stock_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Product_Stock" Type="Self.Product_Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="warehouse_id" />
+      </Principal>
+      <Dependent Role="Product_Stock">
+        <PropertyRef Name="product_warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proposal_History_Proposal">
+    <End Role="Proposal" Type="Self.Proposal" Multiplicity="0..1" />
+    <End Role="Proposal_History" Type="Self.Proposal_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proposal">
+        <PropertyRef Name="proposal_id" />
+      </Principal>
+      <Dependent Role="Proposal_History">
+        <PropertyRef Name="proposal_history_proposal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Purchase_Report_Purchase">
+    <End Role="Purchase" Type="Self.Purchase" Multiplicity="0..1" />
+    <End Role="Purchase_Report" Type="Self.Purchase_Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Purchase">
+        <PropertyRef Name="purchase_id" />
+      </Principal>
+      <Dependent Role="Purchase_Report">
+        <PropertyRef Name="purchase_report_purchase_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sale_Management_Warehouse">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Sale_Management" Type="Self.Sale_Management" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="warehouse_id" />
+      </Principal>
+      <Dependent Role="Sale_Management">
+        <PropertyRef Name="sale_warehouse_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sold_History_Sold_History">
+    <End Role="Sale_Management" Type="Self.Sale_Management" Multiplicity="0..1" />
+    <End Role="Sold_History" Type="Self.Sold_History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sale_Management">
+        <PropertyRef Name="sale_id" />
+      </Principal>
+      <Dependent Role="Sold_History">
+        <PropertyRef Name="sold_history_sale_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Supply_Management_Subscribe_Status">
+    <End Role="Subscribe_Status" Type="Self.Subscribe_Status" Multiplicity="0..1" />
+    <End Role="Supply_Management" Type="Self.Supply_Management" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subscribe_Status">
+        <PropertyRef Name="sub_status_id" />
+      </Principal>
+      <Dependent Role="Supply_Management">
+        <PropertyRef Name="subscribe_status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CRMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Balances" EntityType="Self.Balance" />
+    <EntitySet Name="Bank_Accounts" EntityType="Self.Bank_Account" />
+    <EntitySet Name="Blog_Categories" EntityType="Self.Blog_Category" />
+    <EntitySet Name="Credits" EntityType="Self.Credit" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Expence_Histories" EntityType="Self.Expence_History" />
+    <EntitySet Name="Expence_Transactions" EntityType="Self.Expence_Transaction" />
+    <EntitySet Name="Knowledges" EntityType="Self.Knowledge" />
+    <EntitySet Name="Manage_Knowledges" EntityType="Self.Manage_Knowledge" />
+    <EntitySet Name="Manage_Loans" EntityType="Self.Manage_Loan" />
+    <EntitySet Name="Manage_Projects" EntityType="Self.Manage_Project" />
+    <EntitySet Name="Manage_Suppliers" EntityType="Self.Manage_Supplier" />
+    <EntitySet Name="Newsletters" EntityType="Self.Newsletter" />
+    <EntitySet Name="Newsletter_Histories" EntityType="Self.Newsletter_History" />
+    <EntitySet Name="Notes" EntityType="Self.Note" />
+    <EntitySet Name="Note_Histories" EntityType="Self.Note_History" />
+    <EntitySet Name="Personal_Loans" EntityType="Self.Personal_Loan" />
+    <EntitySet Name="Product_Categories" EntityType="Self.Product_Category" />
+    <EntitySet Name="Product_Managements" EntityType="Self.Product_Management" />
+    <EntitySet Name="Product_Stocks" EntityType="Self.Product_Stock" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="Proposals" EntityType="Self.Proposal" />
+    <EntitySet Name="Proposal_Histories" EntityType="Self.Proposal_History" />
+    <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+    <EntitySet Name="Purchase_Reports" EntityType="Self.Purchase_Report" />
+    <EntitySet Name="Sale_Managements" EntityType="Self.Sale_Management" />
+    <EntitySet Name="Sold_Histories" EntityType="Self.Sold_History" />
+    <EntitySet Name="Subscribe_Status" EntityType="Self.Subscribe_Status" />
+    <EntitySet Name="Supply_Managements" EntityType="Self.Supply_Management" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
+    <AssociationSet Name="FK_Balance_Customer" Association="Self.FK_Balance_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Balance" EntitySet="Balances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Credit_Bank_Account" Association="Self.FK_Credit_Bank_Account">
+      <End Role="Bank_Account" EntitySet="Bank_Accounts" />
+      <End Role="Credit" EntitySet="Credits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expence_History_Bank_Account" Association="Self.FK_Expence_History_Bank_Account">
+      <End Role="Bank_Account" EntitySet="Bank_Accounts" />
+      <End Role="Expence_History" EntitySet="Expence_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expence_Transaction_Bank_Account" Association="Self.FK_Expence_Transaction_Bank_Account">
+      <End Role="Bank_Account" EntitySet="Bank_Accounts" />
+      <End Role="Expence_Transaction" EntitySet="Expence_Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Knowledge_Knowledge" Association="Self.FK_Knowledge_Knowledge">
+      <End Role="Blog_Category" EntitySet="Blog_Categories" />
+      <End Role="Knowledge" EntitySet="Knowledges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proposal_Customer" Association="Self.FK_Proposal_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Proposal" EntitySet="Proposals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Management_Customer" Association="Self.FK_Sale_Management_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Sale_Management" EntitySet="Sale_Managements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Manage_Knowledge_Knowledge" Association="Self.FK_Manage_Knowledge_Knowledge">
+      <End Role="Knowledge" EntitySet="Knowledges" />
+      <End Role="Manage_Knowledge" EntitySet="Manage_Knowledges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Manage_Loan_Personal_Loan" Association="Self.FK_Manage_Loan_Personal_Loan">
+      <End Role="Personal_Loan" EntitySet="Personal_Loans" />
+      <End Role="Manage_Loan" EntitySet="Manage_Loans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Manage_Project_Project" Association="Self.FK_Manage_Project_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Manage_Project" EntitySet="Manage_Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Management_Manage_Supplier" Association="Self.FK_Supply_Management_Manage_Supplier">
+      <End Role="Manage_Supplier" EntitySet="Manage_Suppliers" />
+      <End Role="Supply_Management" EntitySet="Supply_Managements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Newsletter_History_Newsletter" Association="Self.FK_Newsletter_History_Newsletter">
+      <End Role="Newsletter" EntitySet="Newsletters" />
+      <End Role="Newsletter_History" EntitySet="Newsletter_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Note_History_Note" Association="Self.FK_Note_History_Note">
+      <End Role="Note" EntitySet="Notes" />
+      <End Role="Note_History" EntitySet="Note_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Management_Product_Category" Association="Self.FK_Product_Management_Product_Category">
+      <End Role="Product_Category" EntitySet="Product_Categories" />
+      <End Role="Product_Management" EntitySet="Product_Managements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Management_Product_Category" Association="Self.FK_Sale_Management_Product_Category">
+      <End Role="Product_Category" EntitySet="Product_Categories" />
+      <End Role="Sale_Management" EntitySet="Sale_Managements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Stock_Product_Stock" Association="Self.FK_Product_Stock_Product_Stock">
+      <End Role="Product_Management" EntitySet="Product_Managements" />
+      <End Role="Product_Stock" EntitySet="Product_Stocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Management_Product_Management" Association="Self.FK_Sale_Management_Product_Management">
+      <End Role="Product_Management" EntitySet="Product_Managements" />
+      <End Role="Sale_Management" EntitySet="Sale_Managements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Stock_Warehouse" Association="Self.FK_Product_Stock_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouses" />
+      <End Role="Product_Stock" EntitySet="Product_Stocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proposal_History_Proposal" Association="Self.FK_Proposal_History_Proposal">
+      <End Role="Proposal" EntitySet="Proposals" />
+      <End Role="Proposal_History" EntitySet="Proposal_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Purchase_Report_Purchase" Association="Self.FK_Purchase_Report_Purchase">
+      <End Role="Purchase" EntitySet="Purchases" />
+      <End Role="Purchase_Report" EntitySet="Purchase_Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sale_Management_Warehouse" Association="Self.FK_Sale_Management_Warehouse">
+      <End Role="Warehouse" EntitySet="Warehouses" />
+      <End Role="Sale_Management" EntitySet="Sale_Managements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sold_History_Sold_History" Association="Self.FK_Sold_History_Sold_History">
+      <End Role="Sale_Management" EntitySet="Sale_Managements" />
+      <End Role="Sold_History" EntitySet="Sold_Histories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Supply_Management_Subscribe_Status" Association="Self.FK_Supply_Management_Subscribe_Status">
+      <End Role="Subscribe_Status" EntitySet="Subscribe_Status" />
+      <End Role="Supply_Management" EntitySet="Supply_Managements" />
+    </AssociationSet>
+    <EntitySet Name="Reports" EntityType="CRMModel.Report" />
+    <AssociationSet Name="FK_Reports_Manage_Supplier" Association="CRMModel.FK_Reports_Manage_Supplier">
+      <End Role="Manage_Supplier" EntitySet="Manage_Suppliers" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reports_Supply_Management" Association="CRMModel.FK_Reports_Supply_Management">
+      <End Role="Supply_Management" EntitySet="Supply_Managements" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="report_id" />
+    </Key>
+    <Property Name="report_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="report_supp_id" Type="Int32" />
+    <Property Name="report_manage_supp_id" Type="Int32" />
+    <NavigationProperty Name="Manage_Supplier" Relationship="CRMModel.FK_Reports_Manage_Supplier" FromRole="Report" ToRole="Manage_Supplier" />
+    <NavigationProperty Name="Supply_Management" Relationship="CRMModel.FK_Reports_Supply_Management" FromRole="Report" ToRole="Supply_Management" />
+  </EntityType>
+  <Association Name="FK_Reports_Manage_Supplier">
+    <End Type="CRMModel.Manage_Supplier" Role="Manage_Supplier" Multiplicity="1" />
+    <End Type="CRMModel.Report" Role="Report" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Manage_Supplier">
+        <PropertyRef Name="manage_supp_id" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="report_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reports_Supply_Management">
+    <End Type="CRMModel.Supply_Management" Role="Supply_Management" Multiplicity="1" />
+    <End Type="CRMModel.Report" Role="Report" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Supply_Management">
+        <PropertyRef Name="supply_manage_id" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="report_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
