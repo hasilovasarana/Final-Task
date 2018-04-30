@@ -69,13 +69,6 @@ $(document).ready(function(){
 
 
 $(function () {
-  $('[data-toggle="popover"]').popover({
-  	trigger:"hover",
-  	placement:"bottom",
-  	content:' <div class="popover " role="tooltip" ><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"><a class="dropdown-item" href="#change_password" data-toggle="modal"><i class="fa fa-cog" id="icon-change"></i>Change Password</a><a class="dropdown-item" href="admin_login.html"><i class="fa fa-sign-out" id="icon-logout"></i>Log Out</a></div></div>',
-  	container:"body"
-  
-  	
-  })
+    $('[data-toggle="popover"]').popover();
 })
 

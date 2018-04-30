@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.supplier_mobile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.supplier_mobile, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.supplier_mobile, new { htmlAttributes = new { @class = "form-control" ,@type="number"} })
                 @Html.ValidationMessageFor(model => model.supplier_mobile, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.supplier_email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.supplier_email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.supplier_email, new { htmlAttributes = new { @class = "form-control" ,@type="email"} })
                 @Html.ValidationMessageFor(model => model.supplier_email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.supply_date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.supply_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.supply_date, new { htmlAttributes = new { @class = "form-control",@type="date" } })
                 @Html.ValidationMessageFor(model => model.supply_date, "", new { @class = "text-danger" })
             </div>
         </div>
